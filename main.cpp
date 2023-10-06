@@ -19,26 +19,8 @@ const int MAX_BOOKS = 1000;
 
 Book library[MAX_BOOKS];
 int numBooks = 0;
-int main()
-{
-    int result = IDCANCEL;
-    int choice;
-    do
-    {
-        cout << "Library Management System Menu:" << endl;
-        cout << "1. Add a book" << endl;
-        cout << "2. Display all books" << endl;
-        cout << "3. Search for a book" << endl;
-        cout << "4. Edit book information" << endl;
-        cout << "5. Delete a book" << endl;
-        cout << "6. Exit" << endl;
-        cout << "Enter your choice: ";
-        cin >> choice;
 
-        switch (choice)
-        {
-        case 1:
-        {
+void createBook(){
             cout << "Preparing windows..." << flush;
             this_thread::sleep_for(chrono::seconds(3));
             system("CLS");
@@ -92,8 +74,7 @@ int main()
             }
             break;
         }
-        case 2:
-        {
+void showBook(){
             system("CLS");
             cout << "\t \t \t ===========List of Books===========" << endl;
             if (numBooks == 0)
@@ -112,8 +93,7 @@ int main()
             }
             break;
         }
-        case 3:
-        {
+void searchBook(){
             system("CLS");
             cout << "\t \t \t ===========BOOKS SEARCH QUERY===========" << endl;
             if (numBooks == 0)
@@ -154,8 +134,7 @@ int main()
             }
             break;
         }
-        case 4:
-        {
+void editBook()      {
             system("CLS");
             cout << "\t \t \t ===========BOOKS EDIT===========" << endl;
             string ISBN;
@@ -202,8 +181,7 @@ int main()
             }
             break;
         }
-        case 5:
-        {
+void deleteBook(){
             system("CLS");
             cout << "\t \t \t ===========Deleting Command===========" << endl;
             string ISBN;
@@ -235,8 +213,7 @@ int main()
             }
             break;
         }
-        case 6:
-            int result = MessageBox(NULL, "Are you sure to EXIT?", "EXIT?", MB_ICONQUESTION | MB_OKCANCEL);
+void exitRun(){int result = MessageBox(NULL, "Are you sure to EXIT?", "EXIT?", MB_ICONQUESTION | MB_OKCANCEL);
             if (result == IDOK)
             {
                 cout << "Exiting the program. Goodbye!" << endl;
@@ -249,6 +226,36 @@ int main()
                 system("CLS");
             }
         }
+int main()
+{
+    int result = IDCANCEL;
+    int choice;
+    do
+    {
+        cout << "Library Management System Menu:" << endl;
+        cout << "1. Add a book" << endl;
+        cout << "2. Display all books" << endl;
+        cout << "3. Search for a book" << endl;
+        cout << "4. Edit book information" << endl;
+        cout << "5. Delete a book" << endl;
+        cout << "6. Exit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            createBook();
+        case 2:
+            showBook();
+        case 3:
+            searchBook();
+        case 4:
+            editBook();
+        case 5:
+            deleteBook();
+        case 6:
+            exitRun();
     } while (result == IDCANCEL);
 
     return 0;
